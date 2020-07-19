@@ -17,7 +17,7 @@ public class Music {
 			AudioInputStream audioInputStream;// 文件流
 			AudioFormat audioFormat;// 文件格式
 			SourceDataLine sourceDataLine;// 输出设备
-			File file = new File("src/jp/craftegg/band/bgm.mp3");
+			File file = new File("src/me/emilelu/doriemu/bgm.mp3");
 
 			// 取得文件输入流
 			audioInputStream = AudioSystem.getAudioInputStream(file);
