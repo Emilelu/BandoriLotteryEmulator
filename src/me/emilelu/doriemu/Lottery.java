@@ -33,57 +33,36 @@ public class Lottery {
 
 			for (int i = 0; i < times; i++) {
 				System.out.println("Loading...");
-				Thread.sleep(1000);
+//				Thread.sleep(500);
 
 				System.out.println("现在是第 " + timed + " 回！");
-				for (int j = 0; j < 10; j++) { // 随机生成x星环节
-					double random = Math.random();
-					if (timed % 10 == 0) { // 每 10 回获得四星&三星的概率大大增加
-						if (random <= 0.3 && !storedStars.contains("★★★★")) {
-							int howmany = (int) (Math.random() * 2) + 1;
-							String theStar = stars[2];
-							for (int k = 0; k < howmany; k++) {
-								storedStars.add(theStar);
-							}
-						} else if (random <= 0.5 && !storedStars.contains("  ★★★")) {
-							int howmany = (int) (Math.random() * 3) + 1;
-							String theStar = stars[1];
-							for (int k = 0; k < howmany; k++) {
-								storedStars.add(theStar);
-							}
-						} else {
-							String theStar = stars[0];
-							storedStars.add(theStar);
-						}
-					} else {
-						if (random <= 0.06 && !storedStars.contains("★★★★")) {
-							int howmany = (int) (Math.random() * 4) + 1;
-							String theStar = stars[2];
-							if (howmany == 2) {
-								for (int k = 0; k < howmany; k++) {
-									storedStars.add(theStar);
-								}
-							} else {
-								storedStars.add(theStar);
-							}
-						} else if (random <= 0.2609 && !storedStars.contains("  ★★★")) {
-							int howmany = (int) (Math.random() * 3) + 1;
-							String theStar = stars[1];
-							if (howmany == 3) {
-								for (int k = 0; k < howmany; k++) {
-									storedStars.add(theStar);
-								}
-							} else if (howmany % 2 == 0) {
-								for (int k = 0; k < 2; k++) {
-									storedStars.add(theStar);
-								}
-							} else {
-								storedStars.add(theStar);
-							}
-						} else {
-							String theStar = stars[0];
-							storedStars.add(theStar);
-						}
+
+				double four = 0.06;
+				double three = 0.2605;
+				double random = Math.random();
+				if (timed % 10 == 0) {
+					four = 0.3;
+					three = 0.5;
+				}
+				if (random <= four && !storedStars.contains("★★★★")) {
+					int hh = (int) (Math.random() * 2) + 1;
+					for (int k = 0; k < hh; k++) {
+						storedStars.add(stars[2]);
+					}
+				}
+				if (random <= three && !storedStars.contains("  ★★★")) {
+					int hh = (int) (Math.random() * 3) + 1;
+					for (int k = 0; k < hh; k++) {
+						storedStars.add(stars[1]);
+					}
+				}
+
+				boolean ing = true;
+
+				while (ing) {
+					storedStars.add(stars[0]);
+					if (storedStars.size() == 10) {
+						ing = false;
 					}
 				}
 
